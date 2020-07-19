@@ -34,12 +34,14 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li>
-                            <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-                        </li>
-                    </ul>
+                    <!-- Left Side Of Navbar-->
+                    @if (!Auth::guest())
+                        <ul class="navbar-nav mr-auto">
+                            <li>
+                                <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+                            </li>
+                        </ul>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -78,7 +80,10 @@
         </nav>
 
         <main class="py-4">
-            @yield('navbar')
+            @if (!Auth::guest())
+                @yield('navbar')
+            @endif
+            @yield('content')
         </main>
     </div>
     <script>
